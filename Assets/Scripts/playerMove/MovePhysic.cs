@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody))]
+public class MovePhysic : MonoBehaviour {
 
     public float speed = 10.0f;
     public float gravity = 10.0f;
@@ -10,7 +11,8 @@ public class test : MonoBehaviour {
     private bool grounded = false;
     Rigidbody rigid;
 
-
+    public Player player;
+    public Rotate rotate;
 
     void Awake()
     {
@@ -19,36 +21,37 @@ public class test : MonoBehaviour {
         rigid.useGravity = false;
     }
 
-    private void Update()
+    void Start() 
     {
-        
+        player = GetComponentsInChildren<Player>()[0];
+        rotate = GetComponentsInChildren<Rotate>()[0];
     }
 
     void FixedUpdate()
     {
-        if (grounded)
+        if (grounded && (rotate.isStateName("run") || rotate.isStateName("idle2")))
         {
-
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 input = new Vector2(
+                InputMan.getAxisRaw(InputMan.AXIS.H, player.id), 
+                InputMan.getAxisRaw(InputMan.AXIS.V, player.id)
+            );
             Vector2 inputDir = input.normalized;
 
-            if (inputDir != Vector2.zero)
-            {
-                transform.eulerAngles = Vector3.up * Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg;
-            }
-
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 targetVelocity = new Vector3(
+                InputMan.getAxisRaw(InputMan.AXIS.H, player.id),
+                0,
+                InputMan.getAxisRaw(InputMan.AXIS.V, player.id)
+            );
             targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= speed;
-
-            // Apply a force that attempts to reach our target velocity
+            
             Vector3 velocity = rigid.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
+
             rigid.AddForce(velocityChange, ForceMode.VelocityChange);
+        } else {
+            rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
         }
 
         // We apply gravity manually for more tuning control
