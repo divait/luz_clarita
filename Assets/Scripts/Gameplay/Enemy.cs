@@ -28,6 +28,11 @@ public class Enemy : MonoBehaviour {
 			return;
 		}
 
+		if(!state.isAlive() && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead")) {
+			StartCoroutine(death());
+			return;
+		}
+
 		transform.LookAt(goal.transform);
 		agent.destination = goal.transform.position;
 
@@ -82,5 +87,18 @@ public class Enemy : MonoBehaviour {
 				goal = null;
 			}
 		}
+	}
+
+	IEnumerator death() {
+		anim.SetTrigger("dead");
+		foreach(CapsuleCollider c in GetComponents<CapsuleCollider>()) {
+			c.enabled = false;
+		}
+		goal = null;
+		enabled = false;
+
+		yield return new WaitForSeconds(2.0f);
+
+		Destroy(gameObject);
 	}
 }

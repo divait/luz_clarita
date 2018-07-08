@@ -19,6 +19,7 @@ public class LuzGameController : MonoBehaviour {
 	void Update () {
 		// Enemies
 		foreach(Enemy e in enemies) {
+			if(e == null) { continue; }
 			float distance = MAX_DIS;
 			int playerId = -1;
 			for(int i=0; i< players.Length;i++) {

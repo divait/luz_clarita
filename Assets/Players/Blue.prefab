@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 95794428862260416}
   - component: {fileID: 114235605147397752}
   - component: {fileID: 114535489846492426}
+  - component: {fileID: 65564728614550230}
   m_Layer: 0
   m_Name: Monje Azul
   m_TagString: Untagged
@@ -1450,6 +1451,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65564728614550230
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917796275855436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.5, z: 0.4}
+  m_Center: {x: 0, y: 0.4, z: 0.2}
 --- !u!95 &95794428862260416
 Animator:
   serializedVersion: 3
@@ -1544,6 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc04f1ac46c64026ae4b789e4c5541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 10
 --- !u!136 &136230073348077548
 CapsuleCollider:
   m_ObjectHideFlags: 1

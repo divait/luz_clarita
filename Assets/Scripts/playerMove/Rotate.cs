@@ -6,17 +6,20 @@ public class Rotate : MonoBehaviour {
 
 	Animator anim;
     Player player;
+    List<EnemyState> enemysList = new List<EnemyState>();
     // P + P + P + K
     bool isCombo;
     int countP;
     int countK;
+    bool punching;
+    public float attack = 10.0f;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         isCombo = false;
-
+        punching = false;
         countP = 0;
         countK = 0;
 	}
@@ -93,5 +96,40 @@ public class Rotate : MonoBehaviour {
 
     public bool isStatePunsh() {
         return isStateName("init") || isStateName("punch");
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            EnemyState e = collision.GetComponent<Enemy>().state;
+            if (!enemysList.Contains(e))
+            {
+                enemysList.Add(e);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            EnemyState e = collision.GetComponent<Enemy>().state;
+            if (enemysList.Contains(e))
+            {
+                enemysList.Remove(e);
+            }
+        }
+    }
+
+    public void hitEnemies ()
+    {
+        foreach (EnemyState e in enemysList)
+        {
+            if (e != null)
+            {
+                e.hurt(attack);
+            }
+        }
     }
 }
