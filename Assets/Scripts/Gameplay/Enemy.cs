@@ -5,84 +5,74 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
-	public float life = 100.0f;
-	public float attack = 10.0f;
-	public float attackTime = 2.0f;
 	public Player goal;
+	public EnemyState state;
+
 	NavMeshAgent agent;
 	Animator anim;
-	bool isPlayer;
-	float time;
+	float initSpeed;
+
+	List<Player> playersList = new List<Player>();
 
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponent<Animator>();
-		isPlayer = false;
-		time = 0.0f;
+
+		initSpeed = agent.speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(goal == null) {
-			anim.SetBool("punching", false);
 			return;
 		}
 
-		if(time > attackTime) {
-			time = 0.0f;
+		transform.LookAt(goal.transform);
+		agent.destination = goal.transform.position;
 
-			if(!goal.hurt(attack)) {
-				goal = null;
-				isPlayer = false;
-
-				return;
-			}
+		if(anim.GetCurrentAnimatorStateInfo(0).IsName("dead") || anim.GetCurrentAnimatorStateInfo(0).IsName("punch")) {
+			agent.speed = 0;
+		} else {
+			agent.speed = initSpeed;
 		}
 
-		if(!isPlayer) {
-			transform.LookAt(goal.transform);
-			agent.destination = goal.transform.position;
-		}
-	}
-
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player" && goal != null && goal.isAlive())
-        {
-			if(!goal.hurt(attack)) {
-				goal = null;
-				isPlayer = false;
-			} else {
-				isPlayer = true;
-			}
+		Debug.Log("WERWE: " + playersList.Count );
+		if(playersList.Count > 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("walk")) {
+			Debug.Log("PUNCH");
+			anim.SetTrigger("punching");
+			
 		}
 	}
 
-	void OnCollisionExit(Collision collision) {
-		if (collision.gameObject.tag == "Player")
-        {
-			isPlayer = false;
-		}
-	}
-
-	void OnTriggerStay(Collider collision)
+	void OnTriggerEnter(Collider collision)
     {
 		if (collision.gameObject.tag == "Player")
         {
-			time += Time.deltaTime;
-			anim.SetBool("punching", true);
+			Player p = collision.GetComponent<MovePhysic>().player;
+			if(!playersList.Contains(p))
+			{
+				playersList.Add(p);
+			}
 		}
-    }
+	}
 
 	void OnTriggerExit(Collider collision) {
 		if (collision.gameObject.tag == "Player")
         {
-			time += 0.0f;
-			anim.SetBool("punching", false);
+			Player p = collision.GetComponent<MovePhysic>().player;
+			if(playersList.Contains(p))
+			{
+				playersList.Remove(p);
+			}
 		}
 	}
 
-	void hit () {
-		
+	public void hit() {
+		foreach (Player p in playersList) {
+				if(p != null) {
+					p.hurt(state.attack);
+				}
+			}
 	}
 }

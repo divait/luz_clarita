@@ -156,7 +156,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.40521064
-        functionName: NewEvent
+        functionName: hit
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
