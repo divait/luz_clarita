@@ -25,6 +25,12 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(goal == null) {
+            anim.SetBool("punching", false);
+            return;
+		}
+
+		if(!state.isAlive() && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead")) {
+			StartCoroutine(death());
 			return;
 		}
 
@@ -48,7 +54,11 @@ public class Enemy : MonoBehaviour {
     {
 		if (collision.gameObject.tag == "Player")
         {
-			Player p = collision.GetComponent<MovePhysic>().player;
+			Player p = collision.GetComponent<Player>();
+			if(p == null) {
+				p = collision.GetComponent<MovePhysic>().player;
+			}
+
 			if(!playersList.Contains(p))
 			{
 				playersList.Add(p);
@@ -59,7 +69,11 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerExit(Collider collision) {
 		if (collision.gameObject.tag == "Player")
         {
-			Player p = collision.GetComponent<MovePhysic>().player;
+			Player p = collision.GetComponent<Player>();
+			if(p == null) {
+				p = collision.GetComponent<MovePhysic>().player;
+			}
+			
 			if(playersList.Contains(p))
 			{
 				playersList.Remove(p);
@@ -79,8 +93,23 @@ public class Enemy : MonoBehaviour {
 		foreach (Player p in kills) {
 			playersList.Remove(p);
 			if(p.id == goal.id) {
+                Debug.Log("N1");
 				goal = null;
 			}
 		}
+	}
+
+	IEnumerator death() {
+		anim.SetTrigger("dead");
+		foreach(CapsuleCollider c in GetComponents<CapsuleCollider>()) {
+			c.enabled = false;
+		}
+        Debug.Log("N2");
+        goal = null;
+		enabled = false;
+
+		yield return new WaitForSeconds(2.0f);
+
+		Destroy(gameObject);
 	}
 }

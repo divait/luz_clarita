@@ -12,7 +12,7 @@ public class Rotate : MonoBehaviour {
     int countP;
     int countK;
     bool punching;
-    public float attack;
+    public float attack = 10.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -100,9 +100,9 @@ public class Rotate : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Enemy")
         {
-            EnemyState e = collision.GetComponent<EnemyState>();
+            EnemyState e = collision.GetComponent<Enemy>().state;
             if (!enemysList.Contains(e))
             {
                 enemysList.Add(e);
@@ -114,7 +114,7 @@ public class Rotate : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyState e = collision.GetComponent<EnemyState>();
+            EnemyState e = collision.GetComponent<Enemy>().state;
             if (enemysList.Contains(e))
             {
                 enemysList.Remove(e);
