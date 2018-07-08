@@ -10,13 +10,14 @@ public class Rotate : MonoBehaviour {
     bool isCombo;
     int countP;
     int countK;
+    bool punching;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         isCombo = false;
-
+        punching = false;
         countP = 0;
         countK = 0;
 	}
@@ -93,5 +94,15 @@ public class Rotate : MonoBehaviour {
 
     public bool isStatePunsh() {
         return isStateName("init") || isStateName("punch");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }
