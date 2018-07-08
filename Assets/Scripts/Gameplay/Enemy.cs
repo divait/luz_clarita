@@ -53,7 +53,11 @@ public class Enemy : MonoBehaviour {
     {
 		if (collision.gameObject.tag == "Player")
         {
-			Player p = collision.GetComponent<MovePhysic>().player;
+			Player p = collision.GetComponent<Player>();
+			if(p == null) {
+				p = collision.GetComponent<MovePhysic>().player;
+			}
+
 			if(!playersList.Contains(p))
 			{
 				playersList.Add(p);
@@ -64,7 +68,11 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerExit(Collider collision) {
 		if (collision.gameObject.tag == "Player")
         {
-			Player p = collision.GetComponent<MovePhysic>().player;
+			Player p = collision.GetComponent<Player>();
+			if(p == null) {
+				p = collision.GetComponent<MovePhysic>().player;
+			}
+			
 			if(playersList.Contains(p))
 			{
 				playersList.Remove(p);

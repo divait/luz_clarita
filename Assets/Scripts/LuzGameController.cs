@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LuzGameController : MonoBehaviour {
 	public float MAX_DIS = 100.0f;
@@ -8,6 +9,7 @@ public class LuzGameController : MonoBehaviour {
 	public Player[] players;
 	public Enemy[] enemies;
 	public BossEnemy boss;
+	public LuzBehavior luz;
 	private bool isPlaying;
 
 	// Use this for initialization
@@ -17,41 +19,67 @@ public class LuzGameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(luz == null || !havePlayers()) {
+			StartCoroutine(restarLevel());
+		}
+
 		// Enemies
 		foreach(Enemy e in enemies) {
 			if(e == null) { continue; }
-			float distance = MAX_DIS;
-			int playerId = -1;
-			for(int i=0; i< players.Length;i++) {
-				if(players[i] == null) { continue; }
-
-				float d = Vector3.Distance(e.transform.position, players[i].transform.position);
-
-				if(d < distance) {
-					distance = d;
-					playerId = i;
-				}
-			}
+			int playerId = getNearPlayer(e.transform, false);
 			if(playerId >= 0) {
 				e.goal = players[playerId];
 			}
 		}
 
 		// Boss
-		float distanceBoss = MAX_DIS;
-		int playerIdBoss = -1;
-		for(int i=0; i< players.Length;i++) {
-			if(players[i] == null) { continue; }
-
-			float d = Vector3.Distance(boss.transform.position, players[i].transform.position);
-
-			if(d < distanceBoss) {
-				distanceBoss = d;
-				playerIdBoss = i;
-			}
-		}
+		int playerIdBoss = getNearPlayer(boss.transform, false);
 		if(playerIdBoss >= 0) {
 			boss.goal = players[playerIdBoss];
 		}
+
+		// Luz
+		if(luz != null) {
+			int playerIdLuz = getNearPlayer(luz.transform, true);
+			if(playerIdLuz >= 0) {
+				luz.goal = players[playerIdLuz];
+			}
+		}
+	}
+
+	int getNearPlayer(Transform element, bool isLuz) {
+		float distance = MAX_DIS;
+		int playerId = -1;
+		for(int i=0; i< players.Length;i++) {
+			if(players[i] == null || (isLuz && i == players.Length-1)) { continue; }
+
+			float d = Vector3.Distance(element.position, players[i].transform.position);
+
+			if(d < distance) {
+				distance = d;
+				playerId = i;
+			}
+		}
+
+		return playerId;
+	}
+
+	IEnumerator restarLevel () {
+		Debug.Log("END GAME");
+		yield return new WaitForSeconds(5.0f);
+
+		SceneManager.LoadScene("Level_1");
+	}
+
+	bool havePlayers() {
+		bool hPlayers = false;
+		foreach(Player p in players) {
+			if(p != null && players[players.Length -1] != p) {
+				hPlayers = true;
+				break;
+			}
+		}
+
+		return hPlayers;
 	}
 }
