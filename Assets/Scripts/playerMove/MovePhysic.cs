@@ -27,8 +27,18 @@ public class MovePhysic : MonoBehaviour {
         rotate = GetComponentsInChildren<Rotate>()[0];
     }
 
+    void Update() {
+        if(!player.isAlive()) {
+            Destroy(gameObject);
+        }
+    }
+
     void FixedUpdate()
     {
+        if(!player.isAlive()) {
+            return;
+        }
+
         if (grounded && (rotate.isStateName("run") || rotate.isStateName("idle2")))
         {
             Vector2 input = new Vector2(

@@ -23,6 +23,10 @@ public class Rotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!player.isAlive()){
+            return;
+        }
+
 		Vector2 input = new Vector2(
                 InputMan.getAxisRaw(InputMan.AXIS.H, player.id), 
                 InputMan.getAxisRaw(InputMan.AXIS.V, player.id)
