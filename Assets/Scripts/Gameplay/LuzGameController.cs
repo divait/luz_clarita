@@ -7,6 +7,7 @@ public class LuzGameController : MonoBehaviour {
 
 	public Player[] players;
 	public Enemy[] enemies;
+	public BossEnemy boss;
 	private bool isPlaying;
 
 	// Use this for initialization
@@ -16,6 +17,7 @@ public class LuzGameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// Enemies
 		foreach(Enemy e in enemies) {
 			float distance = MAX_DIS;
 			int playerId = -1;
@@ -32,6 +34,23 @@ public class LuzGameController : MonoBehaviour {
 			if(playerId >= 0) {
 				e.goal = players[playerId];
 			}
+		}
+
+		// Boss
+		float distanceBoss = MAX_DIS;
+		int playerIdBoss = -1;
+		for(int i=0; i< players.Length;i++) {
+			if(players[i] == null) { continue; }
+
+			float d = Vector3.Distance(boss.transform.position, players[i].transform.position);
+
+			if(d < distanceBoss) {
+				distanceBoss = d;
+				playerIdBoss = i;
+			}
+		}
+		if(playerIdBoss >= 0) {
+			boss.goal = players[playerIdBoss];
 		}
 	}
 }

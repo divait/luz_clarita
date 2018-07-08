@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public bool hit(float damage) {
+	public bool hurt(float damage) {
 		life -= damage;
-		return isAlive();
+		return life < 0;
 	}
 
 	public bool isAlive() {

@@ -25,13 +25,14 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(goal == null) {
+			anim.SetBool("punching", false);
 			return;
 		}
 
 		if(time > attackTime) {
 			time = 0.0f;
 
-			if(!goal.hit(attack)) {
+			if(!goal.hurt(attack)) {
 				goal = null;
 				isPlayer = false;
 
@@ -46,9 +47,14 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" && goal != null && goal.isAlive())
         {
-			isPlayer = true;
+			if(!goal.hurt(attack)) {
+				goal = null;
+				isPlayer = false;
+			} else {
+				isPlayer = true;
+			}
 		}
 	}
 
