@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossEnemy : MonoBehaviour {
-
-	public float life = 100.0f;
-	public float attack = 10.0f;
-	public Player goal;
+public class BossEnemy : Enemy {
 	NavMeshAgent agent;
 	Animator anim;
 	float initSpeed;

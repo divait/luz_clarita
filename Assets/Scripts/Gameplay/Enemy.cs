@@ -81,4 +81,8 @@ public class Enemy : MonoBehaviour {
 			anim.SetBool("punching", false);
 		}
 	}
+
+	void hit () {
+		
+	}
 }
