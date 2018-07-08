@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossEnemy : Enemy {
+public class BossEnemy : MonoBehaviour {
+	public Player goal;
+	public EnemyState state;
+
 	NavMeshAgent agent;
 	Animator anim;
 	float initSpeed;
@@ -27,7 +30,7 @@ public class BossEnemy : Enemy {
 		transform.LookAt(goal.transform);
 		agent.destination = goal.transform.position;
 
-		if(anim.GetCurrentAnimatorStateInfo(0).IsName("weak") || anim.GetCurrentAnimatorStateInfo(0).IsName("punch")) {
+		if(anim.GetCurrentAnimatorStateInfo(0).IsName("weak") || anim.GetCurrentAnimatorStateInfo(0).IsName("punch") || anim.GetCurrentAnimatorStateInfo(0).IsName("dead")) {
 			agent.speed = 0;
 		} else {
 			agent.speed = initSpeed;
@@ -36,28 +39,6 @@ public class BossEnemy : Enemy {
 		if(playersList.Count > 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("walking")) {
 			anim.SetTrigger("punch");
 			
-		}
-	}
-
-	public void hit() {
-		foreach (Player p in playersList) {
-				if(p != null) {
-					p.hurt(attack);
-				}
-			}
-	}
-
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player" && goal != null && goal.isAlive())
-        {
-			// TODO
-		}
-	}
-
-	void OnCollisionExit(Collision collision) {
-		if (collision.gameObject.tag == "Player")
-        {
-			// TODO
 		}
 	}
 	
@@ -73,14 +54,6 @@ public class BossEnemy : Enemy {
 		}
 	}
 
-	void OnTriggerStay(Collider collision)
-    {
-		if (collision.gameObject.tag == "Player")
-        {
-			// TODO
-		}
-    }
-
 	void OnTriggerExit(Collider collision) {
 		if (collision.gameObject.tag == "Player")
         {
@@ -88,6 +61,14 @@ public class BossEnemy : Enemy {
 			if(playersList.Contains(p))
 			{
 				playersList.Remove(p);
+			}
+		}
+	}
+
+	public void hit() {
+		foreach (Player p in playersList) {
+			if(p != null) {
+				p.hurt(state.attack);
 			}
 		}
 	}
