@@ -9,6 +9,7 @@ public class LuzBehavior : MonoBehaviour {
     NavMeshAgent agent;
     Animator anim;
     float initSpeed;
+    string goalsName;
 
     public bool algo;
 
@@ -17,12 +18,13 @@ public class LuzBehavior : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
+        goalsName = "";
         initSpeed = agent.speed;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(goal.transform.name);
         if (goal == null)
         {
             return;
@@ -38,6 +40,29 @@ public class LuzBehavior : MonoBehaviour {
         else
         {
             agent.speed = initSpeed;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.name  == goal.transform.parent.name)
+        {
+            agent.isStopped = true;
+            agent.speed = 0;
+            anim.SetBool("stop", true);
+            goalsName = other.transform.name;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.name == goalsName)
+        {
+            agent.isStopped = false;
+            agent.speed = initSpeed;
+            anim.SetBool("stop", false);
+            goalsName = "";
+            agent.destination = goal.transform.position;
         }
     }
 }
