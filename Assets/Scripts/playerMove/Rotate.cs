@@ -6,12 +6,13 @@ public class Rotate : MonoBehaviour {
 
 	Animator anim;
     Player player;
-    List<Enemy> enemysList = new List<Enemy>();
+    List<EnemyState> enemysList = new List<EnemyState>();
     // P + P + P + K
     bool isCombo;
     int countP;
     int countK;
     bool punching;
+    public float attack;
 
 	// Use this for initialization
 	void Start () {
@@ -97,20 +98,38 @@ public class Rotate : MonoBehaviour {
         return isStateName("init") || isStateName("punch");
     }
 
-    private void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Player p = collision.GetComponent<MovePhysic>().player;
-            if (!enemysList.Contains(p))
+            EnemyState e = collision.GetComponent<EnemyState>();
+            if (!enemysList.Contains(e))
             {
-                enemysList.Add(p);
+                enemysList.Add(e);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Enemy")
+        {
+            EnemyState e = collision.GetComponent<EnemyState>();
+            if (enemysList.Contains(e))
+            {
+                enemysList.Remove(e);
+            }
+        }
+    }
+
+    public void hitEnemies ()
+    {
+        foreach (EnemyState e in enemysList)
+        {
+            if (e != null)
+            {
+                e.hurt(attack);
+            }
+        }
     }
 }
