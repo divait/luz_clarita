@@ -39,7 +39,7 @@ public class Rotate : MonoBehaviour {
 		// Animation 
         if (inputDir != Vector2.zero)
         {
-            transform.eulerAngles = Vector3.up * Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg;
+            transform.eulerAngles = Vector3.down * Mathf.Atan2(-inputDir.y, -inputDir.x) * Mathf.Rad2Deg;
             anim.SetBool("moving", true);
         }
         else { anim.SetBool("moving", false); }

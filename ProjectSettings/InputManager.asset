@@ -17,9 +17,9 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 10
+    axis: 8
     joyNum: 1
   - serializedVersion: 3
     m_Name: Horizontal3
@@ -33,9 +33,9 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 10
+    axis: 8
     joyNum: 3
   - serializedVersion: 3
     m_Name: Horizontal4
@@ -49,9 +49,9 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 10
+    axis: 8
     joyNum: 4
   - serializedVersion: 3
     m_Name: Horizontal2
@@ -65,9 +65,9 @@ InputManager:
     dead: 0.001
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 10
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical1
@@ -83,7 +83,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 11
+    axis: 9
     joyNum: 1
   - serializedVersion: 3
     m_Name: Vertical2
@@ -99,7 +99,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 11
+    axis: 9
     joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical3
@@ -115,7 +115,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 11
+    axis: 9
     joyNum: 3
   - serializedVersion: 3
     m_Name: Vertical4
@@ -131,7 +131,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 11
+    axis: 9
     joyNum: 4
   - serializedVersion: 3
     m_Name: Fire1

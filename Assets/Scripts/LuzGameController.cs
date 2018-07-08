@@ -29,6 +29,7 @@ public class LuzGameController : MonoBehaviour {
 			int playerId = getNearPlayer(e.transform, false);
             Debug.Log(playerId);
 			if(playerId >= 0) {
+                Debug.Log("Add: " + e);
 				e.goal = players[playerId];
 			}
 		}
@@ -56,7 +57,7 @@ public class LuzGameController : MonoBehaviour {
 
 			float d = Vector3.Distance(element.position, players[i].transform.position);
 
-			if(d < distance) {
+            if (d < distance) {
 				distance = d;
 				playerId = i;
 			}
@@ -66,7 +67,6 @@ public class LuzGameController : MonoBehaviour {
 	}
 
 	IEnumerator restarLevel () {
-		Debug.Log("END GAME");
 		yield return new WaitForSeconds(5.0f);
 
 		SceneManager.LoadScene("map");
