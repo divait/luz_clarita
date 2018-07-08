@@ -8,6 +8,7 @@ public class LuzGameController : MonoBehaviour {
 	public Player[] players;
 	public Enemy[] enemies;
 	public BossEnemy boss;
+    public LuzBehavior luz;
 	private bool isPlaying;
 
 	// Use this for initialization
@@ -52,5 +53,25 @@ public class LuzGameController : MonoBehaviour {
 		if(playerIdBoss >= 0) {
 			boss.goal = players[playerIdBoss];
 		}
-	}
+
+        // luz
+        float distanceLuz = MAX_DIS;
+        int playerIdLuz = -1;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i] == null) { continue; }
+
+            float d = Vector3.Distance(luz.transform.position, players[i].transform.position);
+
+            if (d < distanceLuz)
+            {
+                distanceLuz = d;
+                playerIdLuz = i;
+            }
+        }
+        if (playerIdLuz >= 0)
+        {
+            luz.goal = players[playerIdLuz];
+        }
+    }
 }
