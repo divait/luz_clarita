@@ -27,6 +27,7 @@ public class LuzGameController : MonoBehaviour {
 		foreach(Enemy e in enemies) {
 			if(e == null) { continue; }
 			int playerId = getNearPlayer(e.transform, false);
+            Debug.Log(playerId);
 			if(playerId >= 0) {
 				e.goal = players[playerId];
 			}
@@ -68,7 +69,7 @@ public class LuzGameController : MonoBehaviour {
 		Debug.Log("END GAME");
 		yield return new WaitForSeconds(5.0f);
 
-		SceneManager.LoadScene("Level_1");
+		SceneManager.LoadScene("map");
 	}
 
 	bool havePlayers() {

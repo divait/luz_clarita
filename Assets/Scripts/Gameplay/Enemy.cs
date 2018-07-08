@@ -25,7 +25,8 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(goal == null) {
-			return;
+            anim.SetBool("punching", false);
+            return;
 		}
 
 		if(!state.isAlive() && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead")) {
@@ -92,6 +93,7 @@ public class Enemy : MonoBehaviour {
 		foreach (Player p in kills) {
 			playersList.Remove(p);
 			if(p.id == goal.id) {
+                Debug.Log("N1");
 				goal = null;
 			}
 		}
@@ -102,7 +104,8 @@ public class Enemy : MonoBehaviour {
 		foreach(CapsuleCollider c in GetComponents<CapsuleCollider>()) {
 			c.enabled = false;
 		}
-		goal = null;
+        Debug.Log("N2");
+        goal = null;
 		enabled = false;
 
 		yield return new WaitForSeconds(2.0f);
