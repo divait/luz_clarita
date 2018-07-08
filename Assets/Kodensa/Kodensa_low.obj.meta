@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 1d4ec77b59547fa4bb07ebde2ea4a0e4
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cylinder002
+    100002: Group18623
+    100004: Group18624
+    100006: hilly_billy2
+    100008: Jinete13
+    100010: Jinete14_02
+    100012: //RootNode
+    100014: kODENSA_retopo1
+    100016: mesh1
+    100018: Recovered_Tool1
+    100020: Skin_ZSphere2
+    100022: sombrero_y_gafas1
+    100024: sombrero_y_gafas1_2
+    400000: Cylinder002
+    400002: Group18623
+    400004: Group18624
+    400006: hilly_billy2
+    400008: Jinete13
+    400010: Jinete14_02
+    400012: //RootNode
+    400014: kODENSA_retopo1
+    400016: mesh1
+    400018: Recovered_Tool1
+    400020: Skin_ZSphere2
+    400022: sombrero_y_gafas1
+    400024: sombrero_y_gafas1_2
+    2100000: Cylinder002Mat
+    2100002: Group18623Mat
+    2100004: Group18624Mat
+    2100006: hilly_billy2Mat
+    2100008: Jinete13Mat
+    2100010: Jinete14_02Mat
+    2100012: kODENSA_retopo1Mat
+    2100014: mesh1Mat
+    2100016: Recovered_Tool1Mat
+    2100018: Skin_ZSphere2Mat
+    2100020: sombrero_y_gafas1Mat
+    2100022: sombrero_y_gafas1_2Mat
+    2300000: Cylinder002
+    2300002: Group18623
+    2300004: Group18624
+    2300006: hilly_billy2
+    2300008: Jinete13
+    2300010: Jinete14_02
+    2300012: kODENSA_retopo1
+    2300014: mesh1
+    2300016: Recovered_Tool1
+    2300018: Skin_ZSphere2
+    2300020: sombrero_y_gafas1
+    2300022: sombrero_y_gafas1_2
+    3300000: Cylinder002
+    3300002: Group18623
+    3300004: Group18624
+    3300006: hilly_billy2
+    3300008: Jinete13
+    3300010: Jinete14_02
+    3300012: kODENSA_retopo1
+    3300014: mesh1
+    3300016: Recovered_Tool1
+    3300018: Skin_ZSphere2
+    3300020: sombrero_y_gafas1
+    3300022: sombrero_y_gafas1_2
+    4300000: Cylinder002
+    4300002: Group18623
+    4300004: Group18624
+    4300006: hilly_billy2
+    4300008: Jinete13
+    4300010: Jinete14_02
+    4300012: kODENSA_retopo1
+    4300014: mesh1
+    4300016: Recovered_Tool1
+    4300018: Skin_ZSphere2
+    4300020: sombrero_y_gafas1
+    4300022: sombrero_y_gafas1_2
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

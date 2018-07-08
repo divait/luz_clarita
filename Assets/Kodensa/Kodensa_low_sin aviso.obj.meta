@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: c69b207ba85d4c54cbb5bf57d4edb10e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Group18623
+    100002: Group18624
+    100004: hilly_billy2
+    100006: Jinete13
+    100008: Jinete14_02
+    100010: //RootNode
+    100012: Skin_ZSphere2
+    100014: sombrero_y_gafas1
+    100016: sombrero_y_gafas1_2
+    400000: Group18623
+    400002: Group18624
+    400004: hilly_billy2
+    400006: Jinete13
+    400008: Jinete14_02
+    400010: //RootNode
+    400012: Skin_ZSphere2
+    400014: sombrero_y_gafas1
+    400016: sombrero_y_gafas1_2
+    2100000: Group18623Mat
+    2100002: Group18624Mat
+    2100004: hilly_billy2Mat
+    2100006: Jinete13Mat
+    2100008: Jinete14_02Mat
+    2100010: Skin_ZSphere2Mat
+    2100012: sombrero_y_gafas1Mat
+    2100014: sombrero_y_gafas1_2Mat
+    2300000: Group18623
+    2300002: Group18624
+    2300004: hilly_billy2
+    2300006: Jinete13
+    2300008: Jinete14_02
+    2300010: Skin_ZSphere2
+    2300012: sombrero_y_gafas1
+    2300014: sombrero_y_gafas1_2
+    3300000: Group18623
+    3300002: Group18624
+    3300004: hilly_billy2
+    3300006: Jinete13
+    3300008: Jinete14_02
+    3300010: Skin_ZSphere2
+    3300012: sombrero_y_gafas1
+    3300014: sombrero_y_gafas1_2
+    4300000: Group18623
+    4300002: Group18624
+    4300004: hilly_billy2
+    4300006: Jinete13
+    4300008: Jinete14_02
+    4300010: Skin_ZSphere2
+    4300012: sombrero_y_gafas1
+    4300014: sombrero_y_gafas1_2
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
