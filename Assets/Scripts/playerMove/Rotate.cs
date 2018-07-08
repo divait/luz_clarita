@@ -6,6 +6,7 @@ public class Rotate : MonoBehaviour {
 
 	Animator anim;
     Player player;
+    List<Enemy> enemysList = new List<Enemy>();
     // P + P + P + K
     bool isCombo;
     int countP;
@@ -96,9 +97,16 @@ public class Rotate : MonoBehaviour {
         return isStateName("init") || isStateName("punch");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-
+        if (collision.gameObject.tag == "Player")
+        {
+            Player p = collision.GetComponent<MovePhysic>().player;
+            if (!enemysList.Contains(p))
+            {
+                enemysList.Add(p);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
