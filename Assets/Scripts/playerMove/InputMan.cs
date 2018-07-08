@@ -15,9 +15,9 @@ public class InputMan {
     public static bool GetButton(BUTTON b, int controlNumber) {
         switch(b) {
             case BUTTON.A:
-                return Input.GetButton("Punch" + controlNumber);
+                return Input.GetButtonDown("Punch" + controlNumber);
             case BUTTON.B:
-                return Input.GetButton("Kick" + controlNumber);
+                return Input.GetButtonDown("Kick" + controlNumber);
             default:
                 return false;
         }
