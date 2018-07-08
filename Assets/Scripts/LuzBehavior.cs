@@ -10,41 +10,40 @@ public class LuzBehavior : MonoBehaviour {
     Animator anim;
     float initSpeed;
     string goalsName;
-
-    public bool algo;
+    Player player;
 
 
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        player = GetComponentsInChildren<Player>()[0];
         goalsName = "";
         initSpeed = agent.speed;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(goal.transform.name);
-        if (goal == null)
+        GetComponentsInChildren<Transform>()[0].position = transform.position;
+
+        if (goal == null) 
         {
             return;
         }
 
+        if(!player.isAlive() && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead")) {
+			StartCoroutine(death());
+			return;
+		}
+
         transform.LookAt(goal.transform);
         agent.destination = goal.transform.position;
-
-        if (/*anim.GetCurrentAnimatorStateInfo(0).IsName("weak") || anim.GetCurrentAnimatorStateInfo(0).IsName("punch") || anim.GetCurrentAnimatorStateInfo(0).IsName("dead")*/algo == true)
-        {
-            agent.speed = 0;
-        }
-        else
-        {
-            agent.speed = initSpeed;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if(goal == null) { return ; }
+
         if (other.transform.name  == goal.transform.parent.name)
         {
             agent.isStopped = true;
@@ -65,4 +64,17 @@ public class LuzBehavior : MonoBehaviour {
             agent.destination = goal.transform.position;
         }
     }
+
+    IEnumerator death() {
+		anim.SetTrigger("dead");
+		foreach(CapsuleCollider c in GetComponents<CapsuleCollider>()) {
+			c.enabled = false;
+		}
+		goal = null;
+		enabled = false;
+
+		yield return new WaitForSeconds(2.0f);
+
+		Destroy(gameObject);
+	}
 }

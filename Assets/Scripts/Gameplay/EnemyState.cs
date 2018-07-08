@@ -5,6 +5,11 @@ public class EnemyState {
 
     public bool hurt(float damage) {
 		life -= damage;
-		return life < 0;
+		return life <= 0;
 	}
+
+
+    public bool isAlive() {
+        return life > 0;
+    }
 }
