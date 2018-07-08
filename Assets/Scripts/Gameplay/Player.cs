@@ -16,14 +16,14 @@ public class Player : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (life < 0) {
+		if (life <= 0) {
 			alive = false;
 		}
 	}
 
 	public bool hurt(float damage) {
 		life -= damage;
-		return life < 0;
+		return life > 0;
 	}
 
 	public bool isAlive() {

@@ -37,11 +37,10 @@ public class Enemy : MonoBehaviour {
 			agent.speed = initSpeed;
 		}
 
-		Debug.Log("WERWE: " + playersList.Count );
 		if(playersList.Count > 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("walk")) {
-			Debug.Log("PUNCH");
-			anim.SetTrigger("punching");
-			
+			anim.SetBool("punching", true);
+		} else if(playersList.Count == 0) {
+			anim.SetBool("punching", false);
 		}
 	}
 
@@ -69,10 +68,19 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void hit() {
+		List<Player> kills = new List<Player>();
 		foreach (Player p in playersList) {
-				if(p != null) {
-					p.hurt(state.attack);
+			if(p != null) {
+				if(!p.hurt(state.attack)) {
+					kills.Add(p);
 				}
 			}
+		}
+		foreach (Player p in kills) {
+			playersList.Remove(p);
+			if(p.id == goal.id) {
+				goal = null;
+			}
+		}
 	}
 }
