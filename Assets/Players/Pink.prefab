@@ -453,6 +453,8 @@ GameObject:
   - component: {fileID: 95992571551984424}
   - component: {fileID: 114397390453776322}
   - component: {fileID: 114920687561912646}
+  - component: {fileID: 65269307559069866}
+  - component: {fileID: 82244356253438958}
   m_Layer: 0
   m_Name: Monje Violeta
   m_TagString: Untagged
@@ -974,7 +976,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496667349375754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0, y: 0.204, z: 0.102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4856984248868390}
@@ -1264,7 +1266,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1326729547855780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.9, y: 0, z: -41}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4856984248868390}
@@ -1450,6 +1452,113 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65269307559069866
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523604749084502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.5, z: 0.4}
+  m_Center: {x: 0, y: 0.4, z: 0.2}
+--- !u!82 &82244356253438958
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523604749084502}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95992571551984424
 Animator:
   serializedVersion: 3
@@ -1531,7 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6105385cdfd49bda58406747e9a298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 1000
   id: 4
 --- !u!114 &114920687561912646
 MonoBehaviour:
@@ -1544,6 +1653,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc04f1ac46c64026ae4b789e4c5541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 10
+  audios:
+  - {fileID: 8300000, guid: dd941012ed9fdc240a3a799c59675717, type: 3}
+  - {fileID: 8300000, guid: da0be7600c2d02045a25cbb0b3b0f50d, type: 3}
+  - {fileID: 8300000, guid: 203b46a725507c04ba312a01c3ad20d1, type: 3}
+  - {fileID: 8300000, guid: 0d6835b01a6b9a241962a3d130682751, type: 3}
+  - {fileID: 8300000, guid: 8aaf51247eff832458f87093ae24764f, type: 3}
+  - {fileID: 8300000, guid: 1f9ddc58358877c4598f49d79d590647, type: 3}
 --- !u!136 &136373915946436972
 CapsuleCollider:
   m_ObjectHideFlags: 1

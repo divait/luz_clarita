@@ -6,8 +6,10 @@ using UnityEngine.AI;
 public class LuzBehavior : MonoBehaviour {
 
     public Player goal;
+    public AudioClip[] audios;
     NavMeshAgent agent;
     Animator anim;
+    AudioSource source;
     float initSpeed;
     string goalsName;
     Player player;
@@ -17,6 +19,7 @@ public class LuzBehavior : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
         player = GetComponentsInChildren<Player>()[0];
         goalsName = "";
         initSpeed = agent.speed;
@@ -77,4 +80,12 @@ public class LuzBehavior : MonoBehaviour {
 
 		Destroy(gameObject);
 	}
+
+    public void makeSound(int index) {
+        if (index >=0 && index < audios.Length) {
+            source.clip = audios[index];
+            
+            source.Play();
+        }
+    }
 }

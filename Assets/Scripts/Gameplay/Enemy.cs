@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour {
 
 	public Player goal;
 	public EnemyState state;
+	public AudioClip[] audios;
 
 	NavMeshAgent agent;
 	Animator anim;
+	AudioSource source;
 	float initSpeed;
 
 	List<Player> playersList = new List<Player>();
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponent<Animator>();
+		source = GetComponent<AudioSource>();
 
 		initSpeed = agent.speed;
 	}
@@ -112,4 +115,12 @@ public class Enemy : MonoBehaviour {
 
 		Destroy(gameObject);
 	}
+
+	public void makeSound(int index) {
+        if (index >=0 && index < audios.Length) {
+            source.clip = audios[index];
+            
+            source.Play();
+        }
+    }
 }

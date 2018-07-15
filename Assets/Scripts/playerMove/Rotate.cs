@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rotate : MonoBehaviour {
 
 	Animator anim;
+    AudioSource source;
     Player player;
     List<EnemyState> enemysList = new List<EnemyState>();
     // P + P + P + K
@@ -13,11 +14,14 @@ public class Rotate : MonoBehaviour {
     int countK;
     bool punching;
     public float attack = 10.0f;
+    public AudioClip[] audios;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
         player = GetComponent<Player>();
+        source = GetComponent<AudioSource>();
+
         isCombo = false;
         punching = false;
         countP = 0;
@@ -130,6 +134,14 @@ public class Rotate : MonoBehaviour {
             {
                 e.hurt(attack);
             }
+        }
+    }
+
+    public void makeSound(int index) {
+        if (index >=0 && index < audios.Length) {
+            source.clip = audios[index];
+
+            source.Play();
         }
     }
 }
